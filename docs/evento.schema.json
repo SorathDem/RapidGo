@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FleetTelemetryEvent",
+  "type": "object",
+  "required": ["event_id","event_time","vehicle_id","vehicle_type",
+               "odometer_km","km_since_last_service","engine_temp_c",
+               "fault_code","usage_hours_today"],
+  "properties": {
+    "event_id": {"type": "string", "format": "uuid"},
+    "event_time": {"type": "string", "format": "date-time"},
+    "vehicle_id": {"type": "string", "pattern": "^VEH-\\d{3}$"},
+    "vehicle_type": {"enum": ["moto","bicicleta","carro"]},
+    "odometer_km": {"type": "number", "minimum": 0},
+    "km_since_last_service": {"type": "number", "minimum": 0},
+    "engine_temp_c": {"type": "number", "minimum": -20, "maximum": 200},
+    "fault_code": {"type": ["string","null"], "pattern": "^P\\d{4}$"},
+    "usage_hours_today": {"type": "number", "minimum": 0, "maximum": 24}
+  },
+  "additionalProperties": false
+}

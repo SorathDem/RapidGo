@@ -30,5 +30,16 @@ services:
     volumes:
       - kafka_data:/var/lib/kafka/data
 
+  spark-master:
+    image: apache/spark:3.5.3
+    container_name: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ./spark:/opt/app/spark
+      - ./datalake:/opt/app/datalake
+
 volumes:
   kafka_data:

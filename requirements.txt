@@ -1,0 +1,6 @@
+pyspark==3.5.3
+kafka-python==2.0.2
+pytest==8.3.3
+jsonschema==4.23.0
+pandas==2.2.3
+pyarrow==17.0.0

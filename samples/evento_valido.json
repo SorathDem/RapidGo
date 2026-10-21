@@ -1,0 +1,11 @@
+{
+  "event_id": "b7c1f1e2-5a3d-4c0a-9d1e-2f6a8e3c4b10",
+  "event_time": "2026-10-22T14:30:00Z",
+  "vehicle_id": "VEH-007",
+  "vehicle_type": "moto",
+  "odometer_km": 15234.7,
+  "km_since_last_service": 4820.3,
+  "engine_temp_c": 92.5,
+  "fault_code": null,
+  "usage_hours_today": 6.5
+}

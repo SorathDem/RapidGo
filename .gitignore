@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entornos virtuales y cachés de test
+.venv/
+.pytest_cache/
+
+# Data lake (las subcarpetas se versionan con .gitkeep; los datos no)
+datalake/raw/
+datalake/processed/
+datalake/curated/
+
+# Estado de los jobs de streaming (solo en la raíz; docs/checkpoints/ sí se versiona)
+checkpoints/
+!docs/checkpoints/
+
+# Artefactos de datos
+*.parquet
+
+# Configuración local con secretos
+.env
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,16 @@
+# Evidencia de prueba de Kafka — RapidGo
+
+**Topic:** `rapidgo.fleet.mantenimiento.v1`
+
+**Configuración:** 4 particiones y factor de replicación 1.
+
+**Prueba realizada:** Se enviaron tres eventos de telemetría usando `vehicle_id` como clave.
+
+**Resultados observados:**
+- `VAN-017`: dos eventos recibidos en la partición 1.
+- `VAN-018`: un evento recibido en la partición 0.
+- Total procesado por el consumidor: 3 mensajes.
+
+**Conclusión:** La prueba confirmó el envío y la recepción de eventos en Kafka. Los mensajes con la misma clave de vehículo quedaron en la misma partición, conservando su orden dentro de ella.
+
+**Nota:** El consumidor finalizó por el tiempo de espera configurado (`--timeout-ms 10000`) después de no recibir más mensajes.

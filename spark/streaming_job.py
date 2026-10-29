@@ -3,6 +3,7 @@ from pyspark.sql import SparkSession
 from spark import config as C
 from spark.sinks import escribir_parquet
 from spark.transformations import parsear, condicion_valido, transformar
+from spark.aggregations import iniciar_curated
 
 
 def crear_spark():
@@ -48,8 +49,9 @@ def main():
     spark = crear_spark()
     spark.sparkContext.setLogLevel("WARN")
     procesado = iniciar_queries(spark)
-    # Semana 2 - P3 agrega aqui:  iniciar_curated(procesado)
+    iniciar_curated(procesado)
     spark.streams.awaitAnyTermination()
+    
 
 
 if __name__ == "__main__":

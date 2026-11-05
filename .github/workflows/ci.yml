@@ -1,6 +1,4 @@
-
 name: CI RapidGo
-
 on:
   push:
     branches: [main, dev]
@@ -14,23 +12,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-
       - name: Configurar Python
         uses: actions/setup-python@v7
         with:
           python-version: '3.12'
           cache: 'pip'
-
+      - name: Instalar Airflow (para validar el DAG)
+        run: |
+          pip install "apache-airflow==2.10.5" \
+            --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.5/constraints-3.12.txt"
       - name: Instalar dependencias
-        run: python -m pip install -r requirements.txt
-
+        run: pip install -r requirements.txt
       - name: Validar sintaxis Python
-        run: python -m compileall producer spark tests
-
-      - name: Ejecutar pruebas
+        run: python -m compileall producer spark tests airflow scripts
+      - name: Validar importacion del DAG
         env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest -v
-
+          PYTHONPATH: ${{ github.workspace }}/airflow/dags
+        run: |
+          python -c "from airflow.models import DagBag; d = DagBag('airflow/dags', include_examples=False); assert not d.import_errors, d.import_errors; print('DAG OK:', list(d.dags))"
+      - name: Ejecutar pruebas
+        run: pytest -v
       - name: Validar Docker Compose
         run: docker compose config --quiet

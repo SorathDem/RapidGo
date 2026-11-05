@@ -70,7 +70,7 @@ def rapidgo_flota_calidad():
 
     f = check_fuentes()
     r = validar_raw(f)
-    p = validar_processed(f)
+    p = validar_processed(r)
     k = agregar_kpis(p)
     c = validar_curated(k)
     generar_reporte(f, r, p, k, c)

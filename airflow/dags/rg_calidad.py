@@ -11,12 +11,28 @@ class CalidadError(Exception):
     """Fallo de calidad de datos. Hace fallar la task en Airflow."""
 
 
-# Ajusten a las columnas reales que escribe su job de Spark en processed/
+
 COLUMNAS_PROCESSED = {
-    "event_id", "event_ts", "vehicle_id", "odometer_km",
-    "km_since_last_service", "engine_temp_c", "fault_code",
-    "tiene_falla", "temp_critica",
+    "kafka_key",
+    "kafka_partition",
+    "kafka_offset",
+    "event_id",
+    "event_time",
+    "vehicle_id",
+    "vehicle_type",
+    "odometer_km",
+    "km_since_last_service",
+    "engine_temp_c",
+    "fault_code",
+    "usage_hours_today",
+    "event_ts",
+    "tiene_falla",
+    "mant_vencido",
+    "temp_critica",
+    "banda_temp",
+    "event_date",
 }
+
 
 
 def validar_raw(lake=LAKE):

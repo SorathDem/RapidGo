@@ -15,13 +15,13 @@ Fuentes:
 - EnColombia, "¿Cada cuánto debes hacer mantenimiento a tu motocicleta?":
   https://encolombia.com/economia/tecno/mantenimiento-a-tu-motocicleta/
 
-### A2: Parámetro crítico (engine_temp_c > 105 en 2 o más eventos consecutivos)
+### A2: Parámetro crítico (2 o más lecturas con engine_temp_c > 105 dentro de la ventana)
+
 Los motores de moto operan normalmente entre unos 65 y 110 °C, y el rango
 ideal se ubica aproximadamente entre 82 y 104 °C. Se fijó 105 °C como umbral
 porque está justo por encima de ese rango ideal. Como en tráfico urbano el
 ventilador del motor se activa alrededor de 105 °C y la temperatura puede
-rozar ese valor sin que exista una falla, se exigen 2 lecturas consecutivas
-para evitar falsos positivos por un pico aislado. El código de falla P0217
+rozar ese valor sin que exista una falla, se exigen al menos 2 lecturas críticas dentro de la misma ventana (ver ADR-002: se descartó exigir lecturas consecutivas porque requiere estado por vehículo en streaming). El código de falla P0217
 corresponde a "Engine Coolant Over Temperature Condition" (OBD-II).
 
 Fuentes:

@@ -34,3 +34,22 @@ jobs:
         run: pytest -v
       - name: Validar Docker Compose
         run: docker compose config --quiet
+
+      - name: Quality Gate - documentación obligatoria
+        run: |
+          for f in README.md docs/arquitectura.png docs/checkpoints/semana1.md docs/checkpoints/semana2.md docs/checkpoints/semana3.md; do
+            [ -f "$f" ] || { echo "::error::Falta $f"; exit 1; }
+          done
+          for n in 1 2 3; do
+            ls docs/decisions/ADR-00$n-*.md >/dev/null 2>&1 || { echo "::error::Falta ADR-00$n"; exit 1; }
+          done
+          if grep -rn "«COMPLETAR" README.md docs/checkpoints docs/decisions; then
+            echo "::error::Quedan marcadores COMPLETAR sin resolver"; exit 1
+          fi
+      - name: Empaquetar artefacto
+        run: git archive --format=zip -o rapidgo-flota.zip HEAD
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapidgo-flota
+          path: rapidgo-flota.zip

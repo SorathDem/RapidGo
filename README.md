@@ -8,7 +8,7 @@ Pipeline de datos en tiempo real que simula la telemetría de una flota de vehí
 - **Video de la demostración:** se publica junto con el release v1.0.0.
 - **Releases anteriores:** [v0.2.0-streaming](https://github.com/SorathDem/RapidGo/releases/tag/v0.2.0-streaming) · [v0.3.0-orchestration](https://github.com/SorathDem/RapidGo/releases/tag/v0.3.0-orchestration)
 
-## Arquitectura
+## Arquitectura.
 
 ![Arquitectura](docs/arquitectura.png)
 

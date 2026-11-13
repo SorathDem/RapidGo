@@ -5,7 +5,7 @@
 Pipeline de datos en tiempo real que simula la telemetría de una flota de vehículos de reparto. Detecta mantenimientos vencidos y temperaturas críticas del motor, y genera un reporte de calidad y KPIs.
 
 - **Release final:** [v1.0.0](https://github.com/SorathDem/RapidGo/releases/tag/v1.0.0)
-- **Video de la demostración:** se publica junto con el release v1.0.0.
+- **Video de la demostración:** [Ver video](https://youtu.be/WfKVyEpu5Vk)
 - **Releases anteriores:** [v0.2.0-streaming](https://github.com/SorathDem/RapidGo/releases/tag/v0.2.0-streaming) · [v0.3.0-orchestration](https://github.com/SorathDem/RapidGo/releases/tag/v0.3.0-orchestration)
 
 ## Arquitectura.
